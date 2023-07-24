@@ -75,7 +75,7 @@ def mainExecution():
                         motor1.brake()
                         motor2.brake()
                         eyes.lights.on()
-                    #Reenter Automatic mode
+                    #Re-enter Automatic mode
                     elif key == 'b':
                         break
                         

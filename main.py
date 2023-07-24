@@ -6,6 +6,7 @@ from pybricks.tools import wait, StopWatch
 from usys import stdin
 from uselect import poll
 from pybricks.parameters import Icon, Side
+
 hub = PrimeHub()
 
 motor1 = Motor(Port.C)
@@ -34,6 +35,7 @@ def mainExecution():
         if eyes.distance() < 200 or forceL.pressed(0.1) or forceR.pressed(0.1):
             motor1.brake()
             motor2.brake()
+            hub.speaker.beep(500, 1000)
             hub.display.icon(Icon.SAD)
             wait(200)
             print("Obstacle found. Please reroute. ")
@@ -84,8 +86,8 @@ def mainExecution():
         #Automatic Mode
         elif eyes.distance() >= 200:
             hub.display.icon(Icon.HEART)
-            motor1.run(-402)
-            motor2.run(400)
+            motor1.run(-790)
+            motor2.run(790)
             print(motor1Inches + " total feet")
 
 mainExecution()

@@ -3,9 +3,9 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
+from pybricks.parameters import Icon, Side
 from usys import stdin
 from uselect import poll
-from pybricks.parameters import Icon, Side
 
 hub = PrimeHub()
 
@@ -35,7 +35,7 @@ def mainExecution():
         if eyes.distance() < 200 or forceL.pressed(0.1) or forceR.pressed(0.1):
             motor1.brake()
             motor2.brake()
-            hub.speaker.beep(500, 1000)
+            # hub.speaker.beep(500,1000)
             hub.display.icon(Icon.SAD)
             wait(200)
             print("Obstacle found. Please reroute. ")
@@ -77,15 +77,20 @@ def mainExecution():
                         motor1.brake()
                         motor2.brake()
                         eyes.lights.on()
-                    #Re-enter Automatic mode
+                    #Reenter Automatic mode
                     elif key == 'b':
                         break
-                        
+                    #Manual fast mode
+                    elif key == 'e':
+                        hub.display.icon(Icon.HAPPY)
+                        motor1.run(-790)
+                        motor2.run(790)
+                        print(motor1Inches + " total feet")
                     else:
                         print('Command is invalid. Please try again or analyze code.')
         #Automatic Mode
         elif eyes.distance() >= 200:
-            hub.display.icon(Icon.HEART)
+            hub.display.icon(Icon.HAPPY)
             motor1.run(-790)
             motor2.run(790)
             print(motor1Inches + " total feet")

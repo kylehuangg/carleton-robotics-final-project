@@ -50,7 +50,6 @@ def mainExecution():
                         hub.display.icon(Icon.ARROW_UP)
                         motor1.run(-400)
                         motor2.run(400)
-                        print(motor1Inches + " total feet")
                     #Back
                     elif key =='s':
                         hub.display.icon(Icon.ARROW_DOWN)
